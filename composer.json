@@ -1,8 +1,8 @@
 {
     "name": "horde/mime",
     "description": "MIME library",
-    "type": "library",
-    "homepage": "https://www.horde.org/libraries/Horde_Mime",
+    "type": "horde-library",
+    "homepage": "https://www.horde.org",
     "license": "LGPL-2.1",
     "authors": [
         {
@@ -16,37 +16,91 @@
             "role": "lead"
         }
     ],
-    "version": "2.11.0",
-    "time": "2018-01-14",
+    "version": "2.11.1",
+    "time": "2019-02-06",
     "repositories": [
         {
-            "type": "pear",
-            "url": "https://pear.horde.org"
+            "url": "https://github.com/horde/Exception",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/ListHeaders",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Mail",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Stream",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Stream_Filter",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Support",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Text_Flowed",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Translation",
+            "type": "vcs"
+        },
+        {
+            "url": "https://github.com/horde/Util",
+            "type": "vcs"
+        },
+        {
+            "uri": "https://github.com/horde/Nls",
+            "type": "vcs"
+        },
+        {
+            "uri": "https://github.com/horde/Test",
+            "type": "vcs"
+        },
+        {
+            "uri": "https://github.com/horde/Text_Filter",
+            "type": "vcs"
+        },
+        {
+            "uri": "https://pear.php.net",
+            "type": "pear"
+        },
+        {
+            "uri": "https://pecl.php.net",
+            "type": "pear"
         }
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Exception": "^2",
-        "pear-pear.horde.org/Horde_ListHeaders": "^1.2",
-        "pear-pear.horde.org/Horde_Mail": "^2.5",
-        "pear-pear.horde.org/Horde_Stream": "^1.3",
-        "pear-pear.horde.org/Horde_Stream_Filter": "^2",
-        "pear-pear.horde.org/Horde_Support": "^2.1",
-        "pear-pear.horde.org/Horde_Text_Flowed": "^2",
-        "pear-pear.horde.org/Horde_Translation": "^2.2",
-        "pear-pear.horde.org/Horde_Util": "^2"
+        "horde/Exception": "^2",
+        "horde/ListHeaders": "^1.2",
+        "horde/Mail": "^2.5",
+        "horde/Stream": "^1.3",
+        "horde/Stream_Filter": "^2",
+        "horde/Support": "^2.1",
+        "horde/Text_Flowed": "^2",
+        "horde/Translation": "^2.2",
+        "horde/Util": "^2"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Nls": "^2",
-        "pear-pear.horde.org/Horde_Test": "^2.1",
-        "pear-pear.horde.org/Horde_Text_Filter": "^2",
+        "horde/Nls": "^2",
+        "horde/Test": "^2.1",
+        "horde/Text_Filter": "^2",
         "pear-pear.php.net/Net_DNS2": "*",
-        "pear-pecl.php.net/idn": "*",
-        "pear-pecl.php.net/intl": "*"
-    },
-    "replace": {
-        "pear-pear.horde.org/Horde_Mime": "2.*",
-        "pear-horde/Horde_Mime": "2.*"
+        "pear-pecl.php.net/idn": {
+            "version": "*",
+            "providesextension": "idn"
+        },
+        "pear-pecl.php.net/intl": {
+            "version": "*",
+            "providesextension": "intl"
+        }
     },
     "autoload": {
         "psr-0": {
