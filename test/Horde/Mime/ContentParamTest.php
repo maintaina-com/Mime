@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers_ContentParam;
 
 /**
  * Tests for the Horde_Mime_Headers_ContentParam class.
@@ -20,7 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_ContentParamTest extends PHPUnit_Framework_TestCase
+class ContentParamTest extends TestCase
 {
     /**
      * @dataProvider encodeProvider

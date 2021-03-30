@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Uudecode;
 
 /**
  * Tests for the Horde_Mime_Uudecode class.
@@ -20,7 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_UudecodeTest extends PHPUnit_Framework_TestCase
+class UudecodeTest extends TestCase
 {
     /**
      * @dataProvider uudecodeProvider

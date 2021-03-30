@@ -8,6 +8,11 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mail_Rfc822;
+use \Horde_Mime_Headers;
+use \Horde_Mime_Mdn;
 
 /**
  * Tests for the Horde_Mime_Mdn object.
@@ -20,7 +25,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_MdnTest extends PHPUnit_Framework_TestCase
+class MdnTest extends TestCase
 {
     /**
      * @dataProvider getMdnReturnAddrProvider

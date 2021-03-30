@@ -8,6 +8,10 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime\Mdn;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers;
+use \Horde_Mime_Mdn;
 
 /**
  * Tests for the Horde_Mime_Mdn object that require translations to not occur.
@@ -20,17 +24,17 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_Mdn_NonTranslatedTest extends PHPUnit_Framework_TestCase
+class NonTranslatedTest extends TestCase
 {
     private $oldlocale;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->oldlocale = setlocale(LC_MESSAGES, 0);
         setlocale(LC_MESSAGES, 'C');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         setlocale(LC_MESSAGES, $this->oldlocale);
     }
@@ -40,10 +44,8 @@ class Horde_Mime_Mdn_NonTranslatedTest extends PHPUnit_Framework_TestCase
         $h = new Horde_Mime_Headers();
         $ob = new Horde_Mime_Mdn($h);
 
-        try {
-            $ob->generate(true, true, 'deleted', 'foo', null);
-            $this->fail('Expected Exception');
-        } catch (RuntimeException $e) {}
+        $this->expectException('RuntimeException');
+        $ob->generate(true, true, 'deleted', 'foo', null);
 
         $date = 'Tue, 18 Nov 2014 20:14:17 -0700';
         $mdn_addr = 'Aäb <foo@example.com>';

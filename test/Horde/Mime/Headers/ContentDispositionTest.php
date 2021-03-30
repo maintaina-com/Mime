@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime\Headers;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers_ContentParam_ContentDisposition;
 
 /**
  * Tests for the Horde_Mime_Headers_ContentParam_ContentDisposition class.
@@ -20,8 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_Headers_ContentDispositionTest
-extends PHPUnit_Framework_TestCase
+class ContentDispositionTest extends TestCase
 {
     /**
      * @dataProvider parsingOfInputProvider

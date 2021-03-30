@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime\Headers;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers_ContentLanguage;
 
 /**
  * Tests for the Horde_Mime_Headers_ContentLanguage class.
@@ -20,8 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_Headers_ContentLanguageTest
-extends PHPUnit_Framework_TestCase
+class ContentLanguageTest extends TestCase
 {
     /**
      * @dataProvider parsingOfInputProvider

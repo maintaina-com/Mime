@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Id;
 
 /**
  * Tests for the Horde_Mime_Id class.
@@ -20,7 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_MimeIdTest extends PHPUnit_Framework_TestCase
+class MimeIdTest extends TestCase
 {
     public function testToString()
     {

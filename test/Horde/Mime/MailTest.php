@@ -8,6 +8,13 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Mail;
+use \Horde_Mail_Transport_Mock;
+use \Horde_Mime_Headers;
+use \Horde_Mime_Part;
+use \Horde_Text_Filter;
 
 /**
  * Tests for the Horde_Mime_Mail class.
@@ -20,15 +27,15 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_MailTest extends PHPUnit_Framework_TestCase
+class MailTest extends TestCase
 {
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $_SERVER['SERVER_NAME'] = 'mail.example.com';
         setlocale(LC_ALL, 'C');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         unset($_SERVER['SERVER_NAME']);
         setlocale(LC_ALL, '');
@@ -304,7 +311,12 @@ MIME-Version: 1.0',
             'From' => 'sender@example.com',
             'charset' => 'iso-8859-1'
         ));
-        $mail->setHTMLBody("<h1>Header Title</h1>\n<p>This is<br />the html text body.</p>");
+
+        if (class_exists(Horde_Text_Filter::class)) {
+            $mail->setHTMLBody("<h1>Header Title</h1>\n<p>This is<br />the html text body.</p>");
+        } else {
+            $this->markTestSkipped('Horde_Text_Filter not available.');
+        }
 
         $dummy = new Horde_Mail_Transport_Mock();
         $mail->send($dummy);

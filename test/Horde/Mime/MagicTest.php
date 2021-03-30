@@ -8,6 +8,9 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Magic;
 
 /**
  * Tests for the Horde_Mime_Magic class.
@@ -20,7 +23,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_MagicTest extends PHPUnit_Framework_TestCase
+class MagicTest extends TestCase
 {
     /**
      * @requires extension fileinfo

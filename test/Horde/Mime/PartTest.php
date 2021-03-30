@@ -8,6 +8,10 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers;
+use \Horde_Mime_Part;
 
 /**
  * Tests for the Horde_Mime_Part class.
@@ -20,7 +24,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_PartTest extends PHPUnit_Framework_TestCase
+class PartTest extends TestCase
 {
     public function testParseMessage()
     {
@@ -420,8 +424,7 @@ class Horde_Mime_PartTest extends PHPUnit_Framework_TestCase
             $part1->getAllContentTypeParameters()
         );
 
-        $this->assertInternalType(
-            'resource',
+        $this->assertIsResource(
             $part1->getContents(array('stream' => true))
         );
 
@@ -1033,7 +1036,7 @@ Test.
         return $part;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         Horde_Mime_Part::$defaultCharset =
             Horde_Mime_Headers::$defaultCharset = 'us-ascii';

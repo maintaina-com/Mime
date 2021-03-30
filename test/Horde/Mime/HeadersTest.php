@@ -8,6 +8,15 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Headers;
+use \Horde_Mime_Headers_ContentParam_ContentType;
+use \Horde_Mime_Headers_ContentParam_ContentDisposition;
+use \Horde_Mail_Rfc822;
+use \Horde_Stream_Existing;
+use \Horde_Mime_Headers_Addresses;
+use \Horde_Mime_Headers_Element_Single;
 
 /**
  * Tests for the Horde_Mime_Headers class.
@@ -20,7 +29,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_HeadersTest extends PHPUnit_Framework_TestCase
+class HeadersTest extends TestCase
 {
     public function testClone()
     {
@@ -313,14 +322,11 @@ class Horde_Mime_HeadersTest extends PHPUnit_Framework_TestCase
             "Content-Type: multipart/mixed\n"
         );
 
-        /* @deprecated */
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $hdrs->getValue('content-type', Horde_Mime_Headers::VALUE_BASE)
         );
 
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $hdrs['content-type']->value
         );
     }
@@ -631,8 +637,7 @@ class Horde_Mime_HeadersTest extends PHPUnit_Framework_TestCase
         $hdrs = Horde_Mime_Headers::parseHeaders($data);
 
         /* @deprecated */
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $hdrs->getValue($header, Horde_Mime_Headers::VALUE_BASE)
         );
         $this->assertEquals(
@@ -640,8 +645,7 @@ class Horde_Mime_HeadersTest extends PHPUnit_Framework_TestCase
             $hdrs->getValue($header)
         );
 
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $hdrs[$header]->value_single
         );
         $this->assertEquals(
@@ -687,23 +691,16 @@ class Horde_Mime_HeadersTest extends PHPUnit_Framework_TestCase
     public function testAddHeaderOb($ob, $valid)
     {
         $hdrs = new Horde_Mime_Headers();
-
-        try {
+        if (!$valid) {
+            $this->expectException('InvalidArgumentException');
             $hdrs->addHeaderOb($ob, true);
-            if (!$valid) {
-                $this->fail();
-            }
-        } catch (InvalidArgumentException $e) {
-            if ($valid) {
-                $this->fail();
-            }
-            return;
+        } else {
+            $hdrs->addHeaderOb($ob, true);
+            $this->assertEquals(
+                $ob,
+                $hdrs[$ob->name]
+            );
         }
-
-        $this->assertEquals(
-            $ob,
-            $hdrs[$ob->name]
-        );
     }
 
     public function addHeaderObProvider()

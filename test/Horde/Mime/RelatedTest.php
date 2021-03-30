@@ -8,6 +8,10 @@
  * @package    Mime
  * @subpackage UnitTests
  */
+namespace Horde\Mime;
+use PHPUnit\Framework\TestCase;
+use \Horde_Mime_Related;
+use \Horde_Mime_Part;
 
 /**
  * Tests for the Horde_Mime_Related class.
@@ -20,7 +24,7 @@
  * @package    Mime
  * @subpackage UnitTests
  */
-class Horde_Mime_RelatedTest extends PHPUnit_Framework_TestCase
+class RelatedTest extends TestCase
 {
     /**
      * @dataProvider startProvider
